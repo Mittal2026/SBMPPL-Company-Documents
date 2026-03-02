@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SBMPPL Document Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.07) 2px, transparent 2px);
+            background-size: 60px 60px;
+            animation: moveBackground 40s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveBackground {
+            from { transform: translate(0,0); }
+            to { transform: translate(-200px,-200px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 440px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 5px 0 8px 0;
+            font-size: 26px;
+        }
+
+        p {
+            margin: 0 0 20px 0;
+            color: #cccccc;
+        }
+
+        /* Search */
+        #searchInput {
+            width: 80%;
+            max-width: 380px;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            margin: 10px auto;
+            padding: 12px;
+            width: 85%;
+            max-width: 330px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: #007bff;
+            box-shadow: 0 8px 20px rgba(0,123,255,0.4);
+        }
+
+        .download-all {
+            background: #007bff;
+            margin-top: 20px;
+        }
+
+        .download-all:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .glass {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .btn {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="glass">
+
+        <!-- LOGO -->
+        <img src="SBMPPL_LOGO_page-0001-removebg-preview.png" class="logo" alt="Company Logo">
+
+        <h1>SBMPPL Document Portal</h1>
+        <p>Search and download required documents below.</p>
+
+        <!-- SEARCH -->
+        <input type="text" id="searchInput" onkeyup="searchDocuments()" placeholder="Search documents...">
+
+        <!-- DOCUMENT LIST -->
+        <div id="documentList">
+
+            <a class="btn doc-btn" href="esic-document.pdf" target="_blank">📄 ESIC Document</a>
+            <a class="btn doc-btn" href="gst-certificate-guwahati.pdf" target="_blank">📄 GST Certificate - Guwahati</a>
+            <a class="btn doc-btn" href="gst-certificate-nagaland.pdf" target="_blank">📄 GST Certificate - Nagaland</a>
+            <a class="btn doc-btn" href="iso-certificate.pdf" target="_blank">📄 ISO Certificate</a>
+            <a class="btn doc-btn" href="labour-license-2025.pdf" target="_blank">📄 Labour License</a>
+            <a class="btn doc-btn" href="pan.pdf" target="_blank">📄 PAN</a>
+            <a class="btn doc-btn" href="pf-allotment-letter.pdf" target="_blank">📄 PF Allotment Letter</a>
+            <a class="btn doc-btn" href="udyam-registration.pdf" target="_blank">📄 UDYAM Registration</a>
+            <a class="btn doc-btn" href="incorporation-certificate.pdf" target="_blank">📄 Incorporation Certificate</a>
+            <a class="btn doc-btn" href="trade-license-dimapur.pdf" target="_blank">📄 Trade License - Dimapur</a>
+            <a class="btn doc-btn" href="trade-license-guwahati.pdf" target="_blank">📄 Trade License - Guwahati</a>
+
+        </div>
+
+        <!-- DOWNLOAD ALL ZIP -->
+        <a class="btn download-all" href="all-documents.zip" download>
+            ⬇ Download All Documents (ZIP)
+        </a>
+
+        <footer>
+            © 2026 SBMPPL. All rights reserved.
+        </footer>
+
+    </div>
+</div>
+
+<script>
+function searchDocuments() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let buttons = document.querySelectorAll('.doc-btn');
+
+    buttons.forEach(btn => {
+        let text = btn.textContent.toLowerCase();
+        if (text.includes(input)) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
